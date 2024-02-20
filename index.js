@@ -1,6 +1,7 @@
 var express = require('express');
 var MongoClient = require('mongodb').MongoClient;
 var cors = require('cors');
+const { v4: uuidv4 } = require('uuid');
 
 require('dotenv').config();
 
@@ -35,14 +36,13 @@ let currentId = 1; // Initialize with the starting ID
 
 app.post('/api/kanban/posttask', express.json(), (request, response) => {
     const newTask = {
-        id: currentId.toString(), // Use the current ID and then increment it
+        id: uuidv4(),
         title: request.body.title,
         completed: request.body.completed,
         doing: request.body.doing,
         completionDate: request.body.completionDate
     };
 
-    currentId++; // Increment the ID for the next task
 
     database.collection('kanban-tasks').insertOne(newTask, (error, result) => {
         if (error) {
@@ -56,7 +56,6 @@ app.post('/api/kanban/posttask', express.json(), (request, response) => {
         }
     });
 });
-
 
 
 // Delete task
