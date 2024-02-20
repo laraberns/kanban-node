@@ -31,27 +31,32 @@ app.get('/api/kanban/getalltasks', (request, response) => {
     })
 })
 
-// Post task
-app.post('/api/kanban/posttask', express.json(), (request, response) => {
-    database.collection('kanban-tasks').count({}, function (error, numOfDocs) {
-        const newTask = {
-            id: (numOfDocs + 1).toString(),
-            title: request.body.title,
-            completed: request.body.completed,
-            doing: request.body.doing,
-            completionDate: request.body.completionDate
-        };
+let currentId = 1; // Initialize with the starting ID
 
-        database.collection('kanban-tasks').insertOne(newTask, (error, result) => {
-            if (error) {
-                console.error("Error adding new task:", error);
-                response.status(500).json("Error adding new task");
-            } else {
-                response.json('Adicionada nova task');
-            }
-        });
+app.post('/api/kanban/posttask', express.json(), (request, response) => {
+    const newTask = {
+        id: currentId.toString(), // Use the current ID and then increment it
+        title: request.body.title,
+        completed: request.body.completed,
+        doing: request.body.doing,
+        completionDate: request.body.completionDate
+    };
+
+    currentId++; // Increment the ID for the next task
+
+    database.collection('kanban-tasks').insertOne(newTask, (error, result) => {
+        if (error) {
+            console.error("Error adding new task:", error);
+            response.status(500).json("Error adding new task");
+        } else {
+            response.json({
+                id: newTask.id, // Send back the generated ID
+                message: 'Adicionada nova task'
+            });
+        }
     });
 });
+
 
 
 // Delete task

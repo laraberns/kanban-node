@@ -19,8 +19,10 @@ Este repositório contém o código-fonte para um aplicativo simples de Kanban, 
 
 ### Banco de Dados:
 
-- 🔲 Utilizar uma das opções para armazenamento de dados: SQLite, Postgres, Mysql ou Mongodb.
-- 🔲 Projetar um esquema de banco de dados simples para gerenciar as tarefas e seu estado.
+- ✅ Utilizar uma das opções para armazenamento de dados: SQLite, Postgres, Mysql ou **Mongodb**.
+- ✅ Projetar um esquema de banco de dados simples para gerenciar as tarefas e seu estado.
+
+    ![alt text](image.png)
 
 ### Práticas de Desenvolvimento:
 
