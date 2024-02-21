@@ -13,7 +13,7 @@ Este repositório contém o código-fonte para um aplicativo simples de Kanban, 
 
 ### Requisitos:
 
-- 🔲 Desenvolver uma API para criar, atualizar, mover e deletar tarefas.
+- ✅ Desenvolver uma API para criar, atualizar, mover e deletar tarefas.
 - ✅ A API deve permitir a filtragem e ordenação de tarefas.
 - ❌ Implementar autenticação básica (opcional, para candidatos visando posições mais avançadas).
 

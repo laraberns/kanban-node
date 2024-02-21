@@ -95,22 +95,30 @@ app.put('/api/kanban/updatetask', express.json(), async (request, response) => {
     }
 });
 
-// Update task status
+// Update task status and date
 app.put('/api/kanban/updatetaskstatus', express.json(), async (request, response) => {
+    const { id, completed, doing } = request.body;
+
+    const updateFields = {
+        completed,
+        doing,
+        // Include the completionDate in the update if completed is true
+        completionDate: completed ? new Date().toISOString().slice(0, 10) : undefined,
+    };
+
     try {
-        const { id, completed, doing } = request.body;
         const result = await database.collection('kanban-tasks').updateOne(
             { id },
-            { $set: { completed, doing } }
+            { $set: updateFields }
         );
 
         if (result.matchedCount === 1) {
-            response.json("Task status updated successfully");
+            response.json('Task status updated successfully');
         } else {
-            response.status(404).json("Task not found");
+            response.status(404).json('Task not found');
         }
     } catch (error) {
-        console.error("Error updating task status:", error);
-        response.status(500).json("Error updating task status");
+        console.error('Error updating task status:', error);
+        response.status(500).json('Error updating task status');
     }
 });
