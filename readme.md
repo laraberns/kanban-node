@@ -33,7 +33,7 @@ Este repositório contém o código-fonte para um aplicativo simples de Kanban, 
 
 1. Clone este repositório: `git clone https://github.com/laraberns/kanban-backend.git`
 2. Instale as dependências: `npm install`
-3. Inicie o servidor: `npm start`
+3. Inicie o servidor: `node index.js`
 
 A API estará disponível em [http://localhost:3002](http://localhost:3002) para interação com o frontend.
 
