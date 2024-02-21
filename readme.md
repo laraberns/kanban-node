@@ -14,7 +14,7 @@ Este repositório contém o código-fonte para um aplicativo simples de Kanban, 
 ### Requisitos:
 
 - 🔲 Desenvolver uma API para criar, atualizar, mover e deletar tarefas.
-- 🔲 A API deve permitir a filtragem e ordenação de tarefas.
+- ✅ A API deve permitir a filtragem e ordenação de tarefas.
 - ❌ Implementar autenticação básica (opcional, para candidatos visando posições mais avançadas).
 
 ### Banco de Dados:
@@ -22,12 +22,12 @@ Este repositório contém o código-fonte para um aplicativo simples de Kanban, 
 - ✅ Utilizar uma das opções para armazenamento de dados: SQLite, Postgres, Mysql ou **Mongodb**.
 - ✅ Projetar um esquema de banco de dados simples para gerenciar as tarefas e seu estado.
 
-    ![alt text](image.png)
+   ![alt text](image-1.png)
 
 ### Práticas de Desenvolvimento:
 
-- 🔲 Escrever código limpo e bem organizado, seguindo padrões de código.
-- 🔲 Implementar tratamento de erros e logging adequados.
+- ✅ Escrever código limpo e bem organizado, seguindo padrões de código.
+- ✅ Implementar tratamento de erros e logging adequados.
 
 ### Como Executar o Backend:
 

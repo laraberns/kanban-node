@@ -32,8 +32,7 @@ app.get('/api/kanban/getalltasks', (request, response) => {
     })
 })
 
-let currentId = 1; // Initialize with the starting ID
-
+// Post task
 app.post('/api/kanban/posttask', express.json(), (request, response) => {
     const newTask = {
         id: uuidv4(),
@@ -73,5 +72,25 @@ app.delete('/api/kanban/deletetask', async (request, response) => {
     } catch (error) {
         console.error("Error deleting task:", error);
         response.status(500).json("Error deleting task");
+    }
+});
+
+// Update task title
+app.put('/api/kanban/updatetask', express.json(), async (request, response) => {
+    try {
+        const { id, newTitle } = request.body;
+        const result = await database.collection('kanban-tasks').updateOne(
+            { id },
+            { $set: { title: newTitle } }
+        );
+
+        if (result.matchedCount === 1) {
+            response.json("Task title updated successfully");
+        } else {
+            response.status(404).json("Task not found");
+        }
+    } catch (error) {
+        console.error("Error updating task title:", error);
+        response.status(500).json("Error updating task title");
     }
 });
