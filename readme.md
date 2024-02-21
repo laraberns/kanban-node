@@ -35,6 +35,15 @@ Este repositório contém o código-fonte para um aplicativo simples de Kanban, 
 2. Instale as dependências: `npm install`
 3. Inicie o servidor: `node index.js`
 
+## Configuração das Variáveis de Ambiente
+
+1. Crie um arquivo chamado `.env` no diretório raiz do backend.
+
+2. Adicione as seguintes linhas ao arquivo `.env`:
+
+   ```plaintext
+   MONGODB_CONNECTION_STRING=sua_chave_de_conexao_do_mongodb
+
 A API estará disponível em [http://localhost:3002](http://localhost:3002) para interação com o frontend.
 
 Sinta-se à vontade para explorar, contribuir e aprimorar este projeto!
