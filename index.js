@@ -94,3 +94,23 @@ app.put('/api/kanban/updatetask', express.json(), async (request, response) => {
         response.status(500).json("Error updating task title");
     }
 });
+
+// Update task status
+app.put('/api/kanban/updatetaskstatus', express.json(), async (request, response) => {
+    try {
+        const { id, completed, doing } = request.body;
+        const result = await database.collection('kanban-tasks').updateOne(
+            { id },
+            { $set: { completed, doing } }
+        );
+
+        if (result.matchedCount === 1) {
+            response.json("Task status updated successfully");
+        } else {
+            response.status(404).json("Task not found");
+        }
+    } catch (error) {
+        console.error("Error updating task status:", error);
+        response.status(500).json("Error updating task status");
+    }
+});
